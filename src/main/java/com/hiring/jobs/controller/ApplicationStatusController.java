@@ -45,26 +45,47 @@ public class ApplicationStatusController {
     }
 
     @PostMapping("/status/add")
-    public String addTblApplicationStatus(@ModelAttribute("addTblApplicationStatus") TblApplicationStatus consultationStatus) {
+    public String addTblApplicationStatus(
+            @ModelAttribute("addTblApplicationStatus")
+            TblApplicationStatus consultationStatus
+    ) 
+    {
         this.appStatusService.save(consultationStatus);
-
         return "redirect:/status";
     }
     
-    @RequestMapping(value = "/status/edit/{id}", method = RequestMethod.POST)
+    @PostMapping(value = "/status/edit")
     public String editCosultationStatus(
-            @RequestParam(value = "idApplicationStatus", required = false) Integer id,
-            @RequestParam(value = "nameApplicationStatus", required = false) String name,
-            @RequestParam(value = "activeApplicationStatus", required = false) Boolean status
+            @RequestParam(value = "statusId", required = false) Integer id,
+            @RequestParam(value = "namaStatus", required = false) String name,
+            @RequestParam(value = "status", required = false) Boolean status
     ) {
-        TblApplicationStatus consultationStatus = new TblApplicationStatus(id, name, status);
+        TblApplicationStatus consultationStatus = new TblApplicationStatus(id, name, true);
         consultationStatus.setStatusId(id);
         consultationStatus.setNamaStatus(name);
-        consultationStatus.setStatus(status);
+        consultationStatus.setStatus(status);        
+        
 
         this.appStatusService.save(consultationStatus);
         return "redirect:/status";
         
     }
+ 
     
+        @PostMapping(value = "test")
+    public String tester(
+            @RequestParam(value = "statusId", required = false) Integer id,
+            @RequestParam(value = "namaStatus", required = false) String name,
+            @RequestParam(value = "status", required = false) Boolean status
+    ) {
+        TblApplicationStatus consultationStatus = new TblApplicationStatus(id, name, true);
+        consultationStatus.setStatusId(id);
+        consultationStatus.setNamaStatus(name);
+        consultationStatus.setStatus(status);        
+        
+
+        this.appStatusService.save(consultationStatus);
+        return "redirect:/status";
+        
+    }
 }
