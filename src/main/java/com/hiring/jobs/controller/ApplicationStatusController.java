@@ -51,7 +51,6 @@ public class ApplicationStatusController {
     ) 
     {
         this.appStatusService.save(consultationStatus);
-
         return "redirect:/status";
     }
     
@@ -61,14 +60,32 @@ public class ApplicationStatusController {
             @RequestParam(value = "namaStatus", required = false) String name,
             @RequestParam(value = "status", required = false) Boolean status
     ) {
-        TblApplicationStatus consultationStatus = new TblApplicationStatus(id, name, status);
+        TblApplicationStatus consultationStatus = new TblApplicationStatus(id, name, true);
         consultationStatus.setStatusId(id);
         consultationStatus.setNamaStatus(name);
-        consultationStatus.setStatus(status);
+        consultationStatus.setStatus(status);        
+        
 
         this.appStatusService.save(consultationStatus);
         return "redirect:/status";
         
     }
+ 
     
+        @PostMapping(value = "test")
+    public String tester(
+            @RequestParam(value = "statusId", required = false) Integer id,
+            @RequestParam(value = "namaStatus", required = false) String name,
+            @RequestParam(value = "status", required = false) Boolean status
+    ) {
+        TblApplicationStatus consultationStatus = new TblApplicationStatus(id, name, true);
+        consultationStatus.setStatusId(id);
+        consultationStatus.setNamaStatus(name);
+        consultationStatus.setStatus(status);        
+        
+
+        this.appStatusService.save(consultationStatus);
+        return "redirect:/status";
+        
+    }
 }
