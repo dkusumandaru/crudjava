@@ -1,0 +1,78 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<title>Consultation Status | TreatU</title>
+
+<head th:insert="fragments/head.html :: head">
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+
+    <div class="wrapper">
+        <nav th:insert="fragments/nav.html :: nav" class="navbar"></nav>
+        <aside th:insert="fragments/aside.html :: aside"></aside>
+
+        <div class="content-wrapper">
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0 text-dark">
+                                <b>Status Management</b><small></small>
+                            </h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <span class="pull-right">
+                                            <button class="btn btn-sm btn-success" type="button" data-toggle="modal" data-target="#addApplicationStatus"><span class="fa fa-plus-circle"></span>Add Action</button>
+
+                                </span>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover js-basic-example display" id="example">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="status : ${status}">
+                                        <td th:id="'statusIdText'+${status.statusId}" th:text="${status.statusId}"></td>
+                                        <td th:id="'namaStatusText'+${status.statusId}" th:text="${status.namaStatus}"></td>
+                                        <td th:id="'namaStatusText'+${status.statusId}" th:text="${status.Status}"></td>
+                                        <td>
+                                            <button type="button" class="edit_record btn btn-info btn-sm" th:onclick="|editApplicationStatus(${status.statusId})|"><span class="fas fa-edit"></span> Edit</button>
+                                            <button type="button" class="remove_record btn btn-danger btn-sm" th:onclick="|removeApplicationStatus(${status.statusId})|"><span class="fas fa-trash"></span> Remove</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <form th:insert="application_status/v_add_consultationstatus.html :: form" id="add-row-form" th:action="@{/status/add}" th:object="${addStatus}" method="POST"></form>
+        <form th:insert="application_status/v_edit_consultationstatus.html :: form" id="edit-row-form" th:action="@{/status/edit}" th:object="${editStatus}" method="POST"></form>
+        <form th:insert="application_status/v_remove_consultationstatus.html :: form" id="remove-row-form" th:action="@{/status/remove}" th:object="${removeStatus}" method="POST"></form>
+        <footer th:insert="fragments/footer.html :: footer"></footer>
+    </div>
+
+    <div th:insert="fragments/foot.html :: foot"></div>
+    <script src="js/helper/consultationStatus.js"></script>
+</body>
+
+</html>

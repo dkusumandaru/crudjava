@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <a th:src="@{/img/icons/72x72.png}" class="brand-link">
+      <img th:src="@{/img/icons/72x72.png}" alt="<?php echo $nameApp ?>" class="brand-image img-circle elevation-3"
+         style="opacity: .8">
+    
+    <span class="brand-text font-weight-light">TreatU</span>
+  </a>
+
+	<div class="sidebar">
+		<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+			<div class="info">
+				<a class="d-block">
+					<b>D.Kusumandaru</b><br>
+					<b><i>Admin</i></b> 
+				</a>
+			</div>
+		</div>
+
+		<nav class="mt-2">
+			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+				<li class="nav-item">
+					<a href="app/dashboard" class="nav-link">
+						<i class="nav-icon fas fa-tachometer-alt"></i>
+						<p>
+							Dashboard
+						</p>
+					</a>
+				</li>
+
+				<!-- user management -->
+					<li class="nav-item has-treeview">
+						<a href="" class="nav-link">
+							<i class="nav-icon fas fa-address-card"></i>
+							<p>
+								User Management
+								<i class="right fas fa-angle-left"></i>
+							</p>
+						</a>
+						<ul class="nav nav-treeview">
+							<li class="nav-item">
+								<a th:href="@{/user_management/add}" class="nav-link ">
+									<i class="fas fa-user-plus fa-xs nav-icon"></i>
+									<p>Create New User</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a th:href="@{/user_management}" class="nav-link ">
+									<i class="fas fa-users fa-xs nav-icon"></i>
+									<p>Users</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a th:href="@{/role}" class="nav-link ">
+									<i class="fas fa-check-square fa-xs nav-icon"></i>
+									<p>Role</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a th:href="@{/department}" class="nav-link">
+									<i class="fas fa-building fa-xs nav-icon"></i>
+									<p>Department</p>
+								</a>
+							</li>
+
+						</ul>
+					</li>
+				<!-- user management -->
+
+<!-- 				<li class="nav-item">
+					<a href="cash" class="nav-link">
+						<i class="nav-icon fas fa-money-bill-alt"></i>
+						<p>
+							User Management
+							<span class="right badge badge-danger">New</span>
+						</p>
+					</a>
+				</li> -->
+
+
+					<li class="nav-item">
+						<a th:href="@{/schedule}" class="nav-link">
+							<i class="nav-icon fas fa-calendar"></i>
+							<p>
+								Schedule
+							</p>
+						</a>
+					</li>				 
+
+
+
+
+				<li class="nav-item">
+					<a href="user/logout" class="nav-link">
+						<i class="nav-icon fas fa-sign-out-alt"></i>
+						<p>
+							Logout
+						</p>
+					</a>
+				</li>
+
+		</nav>
+	</div>
+</aside>
