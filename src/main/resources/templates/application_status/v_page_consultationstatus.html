@@ -49,10 +49,17 @@
                                 </thead>
                                 <tbody>
                                     <tr th:each="status : ${status}">
-                                        <td th:id="'statusIdText'+${status.statusId}" th:text="${status.statusId}"></td>
-                                        <td th:id="'namaStatusText'+${status.statusId}" th:text="${status.namaStatus}"></td>
+                                        <td 
+                                        th:id="'statusIdText'+${status.statusId}" 
+                                        th:text="${status.statusId}">
+                                            
+                                        </td>
+                                        <td 
+                                        th:id="'namaStatusText'+${status.statusId}" 
+                                        th:text="${status.namaStatus}"></td>
                                         <td th:id="'namaStatusText'+${status.statusId}" th:text="${status.Status}"></td>
                                         <td>
+
                                             <button type="button" class="edit_record btn btn-info btn-sm" th:onclick="|editApplicationStatus(${status.statusId})|"><span class="fas fa-edit"></span> Edit</button>
                                             <button type="button" class="remove_record btn btn-danger btn-sm" th:onclick="|removeApplicationStatus(${status.statusId})|"><span class="fas fa-trash"></span> Remove</button>
                                         </td>
@@ -66,8 +73,10 @@
         </div>
 
         <form th:insert="application_status/v_add_consultationstatus.html :: form" id="add-row-form" th:action="@{/status/add}" th:object="${addStatus}" method="POST"></form>
+
         <form th:insert="application_status/v_edit_consultationstatus.html :: form" id="edit-row-form" th:action="@{/status/edit}" th:object="${editStatus}" method="POST"></form>
-        <form th:insert="application_status/v_remove_consultationstatus.html :: form" id="remove-row-form" th:action="@{/status/remove}" th:object="${removeStatus}" method="POST"></form>
+
+        <form th:insert="application_status/v_remove_consultationstatus.html :: form" id="remove-row-form" th:action="@{/status/edit}" th:object="${removeStatus}" method="POST"></form>
         <footer th:insert="fragments/footer.html :: footer"></footer>
     </div>
 
